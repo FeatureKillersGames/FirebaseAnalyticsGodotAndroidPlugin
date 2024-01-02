@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Android Plugin Demo"
+config/name="FirebaseAnalyticsDemo"
+config/tags=PackedStringArray("addon", "android", "demo", "in_progress")
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -18,6 +19,14 @@ config/icon="res://icon.svg"
 [debug]
 
 settings/stdout/verbose_stdout=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/FirebaseAnalyticsGodotPlugin/plugin.cfg")
+
+[godots]
+
+version_hint=""
 
 [rendering]
 

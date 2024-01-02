@@ -1,7 +1,6 @@
-extends Node2D
+extends Control
 
-# TODO: Update to match your plugin's name
-var _plugin_name = "GodotAndroidPluginTemplate"
+var _plugin_name = "FirebaseAnalyticsGodotPlugin"
 var _android_plugin
 
 func _ready():
