@@ -17,8 +17,7 @@ func _exit_tree():
 
 
 class AndroidExportPlugin extends EditorExportPlugin:
-	# TODO: Update to your plugin's name.
-	var _plugin_name = "GodotAndroidPluginTemplate"
+	var _plugin_name = "FirebaseAnalyticsGodotPlugin"
 
 	func _supports_platform(platform):
 		if platform is EditorExportPlatformAndroid:
