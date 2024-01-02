@@ -31,6 +31,24 @@ func _exit_tree():
 	export_plugin = null
 
 
+func _disable_plugin() -> void:
+	var file := FileAccess.open("res://android/build/build.gradle", FileAccess.READ)
+	var file_text := file.get_as_text()
+	file.close()
+	file_text = file_text.replace(FIREBASE_PLUGINS, "").replace(FIREBASE_DEPENDENCIES, "")
+	file = FileAccess.open("res://android/build/build.gradle", FileAccess.WRITE)
+	file.store_string(file_text)
+	file.close()
+	
+	file = FileAccess.open("res://android/build/build.gradle", FileAccess.READ)
+	file_text = file.get_as_text()
+	file.close()
+	file_text = file_text.replace(FIREBASE_PLUGINS_ROOT, "")
+	file = FileAccess.open("res://android/build/build.gradle", FileAccess.WRITE)
+	file.store_string(file_text)
+	file.close()
+
+
 class AndroidExportPlugin extends EditorExportPlugin:
 	var _plugin_name = "FirebaseAnalyticsGodotPlugin"
 	
@@ -67,17 +85,20 @@ class AndroidExportPlugin extends EditorExportPlugin:
 				file = FileAccess.open("res://android/build/settings.gradle", FileAccess.WRITE)
 				file.store_string(file_text)
 				file.close()
-	
+
+
 	func _supports_platform(platform):
 		if platform is EditorExportPlatformAndroid:
 			return true
 		return false
+
 
 	func _get_android_libraries(platform, debug):
 		if debug:
 			return PackedStringArray([_plugin_name + "/bin/debug/" + _plugin_name + "-debug.aar"])
 		else:
 			return PackedStringArray([_plugin_name + "/bin/release/" + _plugin_name + "-release.aar"])
+
 
 	func _get_name():
 		return _plugin_name
