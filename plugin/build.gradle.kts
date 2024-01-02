@@ -3,6 +3,7 @@ import com.android.build.gradle.internal.tasks.factory.dependsOn
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 val pluginName = "FirebaseAnalyticsGodotPlugin"
@@ -37,6 +38,9 @@ android {
 
 dependencies {
     implementation("org.godotengine:godot:4.2.0.stable")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.android.gms:play-services-measurement-api:21.5.0")
 }
 
 // BUILD TASKS DEFINITION
