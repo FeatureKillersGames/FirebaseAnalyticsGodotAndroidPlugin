@@ -23,11 +23,14 @@ func _enter_tree():
 	# Initialization of the plugin goes here.
 	export_plugin = AndroidExportPlugin.new()
 	add_export_plugin(export_plugin)
+	add_autoload_singleton("FirebaseAnalytics",
+			"res://addons/FirebaseAnalyticsGodotPlugin/plugin.gd")
 
 
 func _exit_tree():
 	# Clean-up of the plugin goes here.
 	remove_export_plugin(export_plugin)
+	remove_autoload_singleton("FirebaseAnalytics")
 	export_plugin = null
 
 

@@ -1,15 +1,10 @@
 extends Control
 
-var _plugin_name = "FirebaseAnalyticsGodotPlugin"
-var _android_plugin
-
-func _ready():
-	if Engine.has_singleton(_plugin_name):
-		_android_plugin = Engine.get_singleton(_plugin_name)
-	else:
-		printerr("Couldn't find plugin " + _plugin_name)
 
 func _on_Button_pressed():
-	if _android_plugin:
-		# TODO: Update to match your plugin's API
-		_android_plugin.helloWorld()
+	FirebaseAnalytics.logEvent("test",
+				{
+					"value1_lol": 1,
+					"value2_lol": "2",
+					"value3_lol": 0.1
+				})
