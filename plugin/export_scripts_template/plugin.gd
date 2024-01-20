@@ -4,14 +4,14 @@ var _plugin_name = "FirebaseAnalyticsGodotPlugin"
 var _singleton: Object
 
 
-func _ready():
+func _ready() -> void:
 	if Engine.has_singleton(_plugin_name):
 		_singleton = Engine.get_singleton(_plugin_name)
 	else:
 		push_warning("Couldn't find " + _plugin_name)
 
 
-func logEvent(event: String, params: Dictionary):
+func logEvent(event: String, params: Dictionary) -> void:
 	if _singleton:
 		_singleton.logEvent(event, params)
 
