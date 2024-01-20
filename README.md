@@ -2,7 +2,7 @@
 Firebase Analytics implementation for Godot 4.2+. Created from [Godot Android Plugin template](https://github.com/m4gr3d/Godot-Android-Plugin-Template).
 
 ### Instaling the plugin
-For use plugin you mast configure gradle build as covered in [godot docs](https://docs.godotengine.org/en/stable/tutorials/export/android_gradle_build.html)
+For use plugin you must configure gradle build as covered in [godot docs](https://docs.godotengine.org/en/stable/tutorials/export/android_gradle_build.html)
 - Download addon from releases to addons folder of your project
 - Navigate to Project -> Project Settings... -> Plugins, and ensure the plugin is enabled
 - Install the Godot Android build template by clicking on Project -> Install Android Build Template...
@@ -10,7 +10,7 @@ For use plugin you mast configure gradle build as covered in [godot docs](https:
 - Connect an Android device to your machine and run your project
 
 ## Usage
-Download latest release and enable plugin in godot poroject settings.
+Download latest release and enable plugin in godot project settings.
 For log event use function in singleton FirebaseAnalytics: 
 ```gdscript
 func logEvent(event: String, params: Dictionary) -> void:
@@ -41,4 +41,4 @@ And [google recomended parameters](https://firebase.google.com/docs/reference/an
   [plugin/demo/addons](plugin/demo/addons)
 
 ### Warning
-I use some workaround for connect android plugins to project, so if you now how to do it properly be free to contribute or send me some guides how to do it properly.
+I use some workaround to connect android plugins to the project, so if you know how to do it properly be free to contribute or send me some guides on how to do it properly.
