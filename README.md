@@ -1,12 +1,12 @@
 # Firebase Analytics Godot Android Plugin
-Firebase Analytics implementation for Godot 4.2+. Created from (Godot Android Plugin template)[https://github.com/m4gr3d/Godot-Android-Plugin-Template].
+Firebase Analytics implementation for Godot 4.2+. Created from [Godot Android Plugin template](https://github.com/m4gr3d/Godot-Android-Plugin-Template).
 
 ### Instaling the plugin
 For use plugin you mast configure gradle build as covered in [godot docs](https://docs.godotengine.org/en/stable/tutorials/export/android_gradle_build.html)
 - Download addon from releases to addons folder of your project
 - Navigate to Project -> Project Settings... -> Plugins, and ensure the plugin is enabled
 - Install the Godot Android build template by clicking on Project -> Install Android Build Template...
-- Add your (google-services.json)[https://developers.google.com/android/guides/google-services-plugin] to android/build folder in your project 
+- Add your [google-services.json](https://developers.google.com/android/guides/google-services-plugin) to android/build folder in your project 
 - Connect an Android device to your machine and run your project
 
 ## Usage
