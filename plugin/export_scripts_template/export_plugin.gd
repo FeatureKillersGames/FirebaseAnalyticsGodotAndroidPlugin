@@ -1,4 +1,5 @@
 @tool
+class_name FirebaseAnalyticsEditorPlugin
 extends EditorPlugin
 
 # A class member to hold the editor export plugin during its lifecycle.
@@ -35,21 +36,26 @@ func _exit_tree():
 
 
 func _disable_plugin() -> void:
-	var file := FileAccess.open("res://android/build/build.gradle", FileAccess.READ)
-	var file_text := file.get_as_text()
-	file.close()
-	file_text = file_text.replace(FIREBASE_PLUGINS, "").replace(FIREBASE_DEPENDENCIES, "")
-	file = FileAccess.open("res://android/build/build.gradle", FileAccess.WRITE)
-	file.store_string(file_text)
-	file.close()
+	_cleanup_plugin()
 	
-	file = FileAccess.open("res://android/build/build.gradle", FileAccess.READ)
-	file_text = file.get_as_text()
-	file.close()
-	file_text = file_text.replace(FIREBASE_PLUGINS_ROOT, "")
-	file = FileAccess.open("res://android/build/build.gradle", FileAccess.WRITE)
-	file.store_string(file_text)
-	file.close()
+static func _cleanup_plugin() -> void:
+	if FileAccess.file_exists("res://android/build/build.gradle"):
+		var file := FileAccess.open("res://android/build/build.gradle", FileAccess.READ)
+		var file_text := file.get_as_text()
+		file.close()
+		file_text = file_text.replace(FIREBASE_PLUGINS, "").replace(FIREBASE_DEPENDENCIES, "")
+		file = FileAccess.open("res://android/build/build.gradle", FileAccess.WRITE)
+		file.store_string(file_text)
+		file.close()
+	
+	if FileAccess.file_exists("res://android/build/settings.gradle"):
+		var file := FileAccess.open("res://android/build/settings.gradle", FileAccess.READ)
+		var file_text := file.get_as_text()
+		file.close()
+		file_text = file_text.replace(FIREBASE_PLUGINS_ROOT, "")
+		file = FileAccess.open("res://android/build/settings.gradle", FileAccess.WRITE)
+		file.store_string(file_text)
+		file.close()
 
 
 class AndroidExportPlugin extends EditorExportPlugin:
@@ -57,6 +63,10 @@ class AndroidExportPlugin extends EditorExportPlugin:
 	
 	func _export_begin(features: PackedStringArray, is_debug: bool, path: String, flags: int) -> void:
 		if features.has("android"):
+			if not get_option("gradle_build/use_gradle_build")\
+				or not FileAccess.file_exists("res://android/build/google-services.json"):
+				FirebaseAnalyticsEditorPlugin._cleanup_plugin()
+				return
 			var file := FileAccess.open("res://android/build/build.gradle", FileAccess.READ)
 			var file_text := file.get_as_text()
 			file.close()
@@ -92,6 +102,12 @@ class AndroidExportPlugin extends EditorExportPlugin:
 
 	func _supports_platform(platform):
 		if platform is EditorExportPlatformAndroid:
+			if not get_option("gradle_build/use_gradle_build"):
+				push_warning("Firebase Analytics not added cause you don't use grudle build")
+				return false
+			if not FileAccess.file_exists("res://android/build/google-services.json"):
+				push_warning("Firebase Analytics not added cause file res://android/build/google-services.json not founded")
+				return false
 			return true
 		return false
 
