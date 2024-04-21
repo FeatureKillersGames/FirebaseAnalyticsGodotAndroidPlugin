@@ -6,9 +6,9 @@ extends EditorPlugin
 var export_plugin : AndroidExportPlugin
 const FIREBASE_DEPENDENCIES := """\n    \
 //Firebase dependencies\n    \
-implementation platform("com.google.firebase:firebase-bom:32.7.0")\n    \
+implementation platform("com.google.firebase:firebase-bom:32.8.1")\n    \
 implementation "com.google.firebase:firebase-analytics"\n    \
-implementation "com.google.android.gms:play-services-measurement-api:21.5.0"
+implementation "com.google.android.gms:play-services-measurement-api:21.6.2"
 """
 const FIREBASE_PLUGINS := """\n    \
 //Firebase plugins\n    \
@@ -16,7 +16,7 @@ id 'com.google.gms.google-services'
 """
 const FIREBASE_PLUGINS_ROOT := """\n        \
 //Firebase plugins\n        \
-id 'com.google.gms.google-services' version '4.3.10' apply false
+id 'com.google.gms.google-services' version '4.3.14' apply false
 """
 
 
