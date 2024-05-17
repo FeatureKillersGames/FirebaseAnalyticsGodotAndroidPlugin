@@ -37,10 +37,10 @@ android {
 }
 
 dependencies {
-    implementation("org.godotengine:godot:4.2.0.stable")
-    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("org.godotengine:godot:4.2.2.stable")
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.android.gms:play-services-measurement-api:21.5.0")
+    implementation("com.google.android.gms:play-services-measurement-api:22.0.0")
 }
 
 // BUILD TASKS DEFINITION

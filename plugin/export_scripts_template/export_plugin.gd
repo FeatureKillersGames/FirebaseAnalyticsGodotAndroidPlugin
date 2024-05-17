@@ -6,9 +6,9 @@ extends EditorPlugin
 var export_plugin : AndroidExportPlugin
 const FIREBASE_DEPENDENCIES := """\n    \
 //Firebase dependencies\n    \
-implementation platform("com.google.firebase:firebase-bom:32.7.0")\n    \
+implementation platform("com.google.firebase:firebase-bom:33.0.0")\n    \
 implementation "com.google.firebase:firebase-analytics"\n    \
-implementation "com.google.android.gms:play-services-measurement-api:21.5.0"
+implementation "com.google.android.gms:play-services-measurement-api:22.0.0"
 """
 const FIREBASE_PLUGINS := """\n    \
 //Firebase plugins\n    \
@@ -16,7 +16,7 @@ id 'com.google.gms.google-services'
 """
 const FIREBASE_PLUGINS_ROOT := """\n        \
 //Firebase plugins\n        \
-id 'com.google.gms.google-services' version '4.3.10' apply false
+id 'com.google.gms.google-services' version '4.4.1' apply false
 """
 
 
@@ -72,8 +72,8 @@ class AndroidExportPlugin extends EditorExportPlugin:
 			file.close()
 			var replace_file := false
 			if not "//Firebase dependencies" in file_text:
-				file_text = file_text.replace("implementation libraries.androidxFragment\n",
-						"implementation libraries.androidxFragment\n" + FIREBASE_DEPENDENCIES)
+				file_text = file_text.replace("implementation \"androidx.fragment:fragment:$versions.fragmentVersion\"\n",
+						"implementation \"androidx.fragment:fragment:$versions.fragmentVersion\"\n" + FIREBASE_DEPENDENCIES)
 				replace_file = true
 			if not file_text.contains("//Firebase plugins"):
 				file_text = file_text.replace("id 'org.jetbrains.kotlin.android'\n",
