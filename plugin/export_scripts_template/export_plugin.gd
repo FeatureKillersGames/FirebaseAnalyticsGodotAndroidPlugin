@@ -24,7 +24,7 @@ func _enter_tree():
 	# Initialization of the plugin goes here.
 	export_plugin = AndroidExportPlugin.new()
 	add_export_plugin(export_plugin)
-	# add_autoload_singleton("FirebaseAnalytics", "plugin.gd")
+	add_autoload_singleton("FirebaseAnalytics", "plugin.gd")
 
 
 func _exit_tree():
