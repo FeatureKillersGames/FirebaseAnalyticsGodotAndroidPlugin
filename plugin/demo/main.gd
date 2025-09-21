@@ -8,3 +8,5 @@ func _on_Button_pressed():
 					"value2": "2",
 					"value3": 0.1
 				})
+
+	FirebaseAnalytics.setUserProperty("test_property", "test")

@@ -26,6 +26,10 @@ func _on_Button_pressed():
             "value3": 0.3
 	})
 ```
+Use FirebaseAnalytics.setUserProperty() to set [user properties](https://firebase.google.com/docs/analytics/user-properties?platform=android):
+```gdscript
+func setUserProperty(property_name: String, value: String) -> void:
+```
 Plugin store [google recomended events](https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.Event) names as constatns that you can use:
 
 ![image](https://github.com/FeatureKillersGames/FirebaseAnalyticsGodotAndroidPlugin/assets/36816595/698b04a2-6aa7-4bf9-b1cc-7c7673357fb0)
