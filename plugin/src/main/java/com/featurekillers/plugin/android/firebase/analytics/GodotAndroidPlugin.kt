@@ -46,4 +46,9 @@ class GodotAndroidPlugin(godot: Godot): GodotPlugin(godot) {
             }
         }
     }
+
+    @UsedByGodot
+    private fun setUserProperty(name: String, value: String) {
+        firebaseAnalytics.setUserProperty(name, value)
+    }
 }

@@ -15,6 +15,12 @@ func logEvent(event: String, params: Dictionary) -> void:
 	if _singleton:
 		_singleton.logEvent(event, params)
 
+
+func setUserProperty(property_name: String, value: String) -> void:
+	if _singleton:
+		_singleton.setUserProperty(property_name, value)
+
+
 ## https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.Event
 class Event:
 	const ADD_PAYMENT_INFO = "add_payment_info"
